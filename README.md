@@ -1,4 +1,4 @@
-# Atividade Projeto Inegrador 4
+# Atividade Projeto Integrador 4
         
         # Front end do projeto
         Tecnologias Usadas Para o desenvolvimento do projeto
