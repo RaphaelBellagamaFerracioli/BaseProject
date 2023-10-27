@@ -1,4 +1,22 @@
-# Getting Started with Create React App
+# Atividade Projeto Inegrador 4
+        
+        # Front end do projeto
+        Tecnologias Usadas Para o desenvolvimento do projeto
+        
+        Para rodar o projeto o usuario devera ter instalado em sua maquina o node js
+        O projeto foi separado em backend e front end
+        Para rodar o front end do projeto 
+        Va até a pasta rais do projeto e
+        escreva npm start no prompt de comando de sua escolha (presupondo que o react já está instalado na sua maquina)
+
+        # Backend do projeto
+        O backend foi desenvolvido em nodeJs
+        Para inicializalo é entre na pasta backend do projeto e escreva npm run server
+
+#       Baixe as seguintes extensoes 
+        Extensoes necessarias
+        npm install react-bootstrap bootstrap
+        npm i bcryptjs cors dotenv express express-validator jsonwebtoken mongoose multer
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
