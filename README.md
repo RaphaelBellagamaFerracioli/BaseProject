@@ -15,8 +15,9 @@
 
 #       Baixe as seguintes extensoes 
         Extensoes necessarias
-        npm install react-bootstrap bootstrap
-        npm i bcryptjs cors dotenv express express-validator jsonwebtoken mongoose multer
+        (pasta front) npm install react-bootstrap bootstrap
+        (pasta front) npm i react-icons react-router-dom @reduxjs/toolkit
+        (backend)npm i bcryptjs cors dotenv express express-validator jsonwebtoken mongoose multer
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
