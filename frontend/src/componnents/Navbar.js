@@ -10,7 +10,7 @@ function Navbar() {
       <nav id="nav">
         
             <Link to="/">Blog</Link>
-            <input type='text'></input>
+        
         
             <form>
             <BsSearch></BsSearch>
