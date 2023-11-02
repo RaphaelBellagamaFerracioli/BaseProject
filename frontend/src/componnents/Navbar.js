@@ -6,11 +6,12 @@ import {BsSearch, BsHouseDoorFill, BsFillPersonFill, BsFillCameraFill}
 from 'react-icons/bs'; //o bs é da biblioteca boodstrap
 
 // Hooks
-import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+//Redux
+import { logout, reset } from '../slices/authSlice';
 
 function Navbar() {
 
@@ -20,6 +21,14 @@ function Navbar() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
+  const handleLogout = () =>{
+
+    dispatch(logout())
+    dispatch(reset())
+
+    navigate("/login")
+  };
 
   return (
     <nav id="nav">
@@ -55,12 +64,12 @@ function Navbar() {
             </NavLink>
           </li>
           <li>
-            <span>Sair</span>
+            <span onClick={handleLogout}>Sair</span>
           </li>
         </>
       ) : (
         <>
-          {" "}
+         
           <li>
             <NavLink to="/login">Entrar</NavLink>
           </li>
