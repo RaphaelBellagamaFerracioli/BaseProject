@@ -2,7 +2,7 @@ import "./Auth.css";
 import React from 'react'
 // Components
 import {Link} from "react-router-dom"
-
+import Message from "../../componnents/Message";
 // Redux
 import { register, reset } from "../../slices/authSlice";
 
@@ -12,7 +12,7 @@ import {useSelector, useDispatch} from "react-redux"
 import { useState, useEffect } from "react";
 
 const Register = () => {
-
+ 
   const [name, setName] =useState("");
   const [email, setEmail] =useState("");
   const [password, setPassword] =useState("");
@@ -55,7 +55,10 @@ const Register = () => {
             <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email || ""}></input>
             <input type="password" placeholder="Senha" onChange={(e) => setPassword(e.target.value)} value={password || ""}></input>
             <input type="password" placeholder="Comfirmar senha" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword || ""}></input>
-            <input type="submit" value="Cadastrar"></input>
+            
+           {!loading && <input type="submit" value="Cadastrar"></input>}
+           {loading && <input type="submit" value="Aguarde..." disabled></input> }
+           {error && <Message msg={error} type={error}></Message>}
         </form>
         Já tem uma conta ?<Link to="/login">Venha fazer Login</Link>
     </div>

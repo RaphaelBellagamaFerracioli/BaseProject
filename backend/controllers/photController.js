@@ -32,6 +32,8 @@ const insertPhoto = async (req, res) => {
         res.status(422).json({
             errors: ["Houve um problema, por favor tente mais tarde."],
         });
+
+        return;
     }
  
     res.status(201).json(newPhoto);
