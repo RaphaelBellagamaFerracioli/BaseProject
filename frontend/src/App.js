@@ -7,14 +7,15 @@ import Login from "../src/pages/Auth/Login"
 import Register  from "../src/pages/Auth/Register"
 import EditProfile from "../src/pages/EditProfile/EditProfile"
 import Profile from './pages/Profile/Profile';
-
+import  Search  from './pages/Search/Search';
 //hooks
 import { useAuth } from "./hooks/useAuth";
 
 //Components
 import Navbar from './componnents/Navbar';
 import Footer from './componnents/Footer';
-import authService from './services/authService';
+
+import Photo from './pages/Photo/Photo';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
               element={auth ? <EditProfile /> : <Navigate to="/login" />}
               
               />
+        
         <Route path="/users/:id"
               element={auth ? <Profile /> : <Navigate to="/login" />}
               />
@@ -45,6 +47,12 @@ function App() {
         <Route path='/login' element={!auth ?<Login/>:<Navigate to="/"/>}></Route>        
 
         <Route path='/register' element={!auth ?<Register/>:<Navigate to="/"/>}></Route>
+
+        <Route path="/search" element={auth ? <Search /> : <Navigate to="/login" />}
+              />
+
+        <Route path="/photos/:id" element={auth ? <Photo /> : <Navigate to="/login" />}
+              />
 
      </Routes>
      

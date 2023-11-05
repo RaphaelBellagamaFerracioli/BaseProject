@@ -3,9 +3,10 @@ import "./Photo.css";
 import { uploads } from "../../utils/config";
 
 // components
-import Message from "../../components/Message";
-import PhotoItem from "../../components/PhotoItem";
-import LikeContainer from "../../components/LikeContainer";
+import Message from "../../componnents/Message";
+
+import PhotoItem from "../../componnents/PhotoItem";
+import LikeContainer from "../../componnents/LikeContainer";
 import { Link } from "react-router-dom";
 
 // hooks
@@ -25,9 +26,8 @@ const Photo = () => {
   const resetMessage = useResetComponentMessage(dispatch);
 
   const { user } = useSelector((state) => state.auth);
-  const { photo, loading, error, message } = useSelector(
-    (state) => state.photo
-  );
+  const { photo, loading, error, message } = useSelector((state) => state.photo);
+
 
   const [commentText, setCommentText] = useState();
 
@@ -65,7 +65,9 @@ const Photo = () => {
 
   return (
     <div id="photo">
+      <p>Foto</p>
       <PhotoItem photo={photo} />
+
       <LikeContainer photo={photo} user={user} handleLike={handleLike} />
       <div className="message-container">
         {error && <Message msg={error} type="error" />}

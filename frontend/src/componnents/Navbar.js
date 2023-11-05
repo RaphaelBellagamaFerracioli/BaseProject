@@ -1,6 +1,6 @@
-
 import './Navbar.css'
 
+import { useState } from "react";
 import {NavLink, Link} from 'react-router-dom'
 import {BsSearch, BsHouseDoorFill, BsFillPersonFill, BsFillCameraFill} 
 from 'react-icons/bs'; //o bs é da biblioteca boodstrap
@@ -18,6 +18,8 @@ function Navbar() {
   const { auth } = useAuth();
   const { user } = useSelector((state) => state.auth);
 
+  const [query, setQuery] = useState("");
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -28,18 +30,26 @@ function Navbar() {
     dispatch(reset())
 
     navigate("/login")
-  };
 
+  };
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    if (query) {
+      return navigate(`/search?q=${query}`);
+    }
+  }
   return (
     <nav id="nav">
     <Link to="/">
       <h2>ReactGram</h2>
     </Link>
-    <form id="search-form" >
+    <form id="search-form"  onSubmit={handleSearch}>
       <BsSearch />
       <input
         type="text"
         placeholder="Pesquisar"
+        onChange={(e) => setQuery(e.target.value)}
       
       />
     </form>
