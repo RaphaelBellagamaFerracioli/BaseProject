@@ -16,6 +16,11 @@ const photoInsertValidation = () => {
       }
       return true;
     }),
+    body("conteudo")
+      .not()
+      .equals("undefined")
+      .withMessage("O conteudo é obrigatório")
+      .isString()
   ];
 };
 const photoUpdateValidation = () => {
@@ -34,6 +39,12 @@ const photoUpdateValidation = () => {
       .withMessage("O título é obrigatório")
       .isLength({ min: 3 })
       .withMessage("O nome precisa ter no mínimo 3 caracteres."),
+    
+    body("conteudo")
+      .isString()
+      .withMessage("O conteudo é obrigatório")
+      .isLength({ min: 3 })
+      .withMessage("O conteudo precisa ter no mínimo 3 caracteres."),
   ];
 };
 

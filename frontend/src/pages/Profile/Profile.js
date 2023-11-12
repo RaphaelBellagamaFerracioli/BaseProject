@@ -44,11 +44,13 @@ function Profile() {
 
 
   const [title, setTitle] = useState();
+  const [conteudo, setConteudo] = useState();
   const [image, setImage] = useState();
 
    const [editId, setEditId] = useState();
    const [editImage, setEditImage] = useState();
    const [editTitle, setEditTitle] = useState();
+   const [editConteudo, setEditConteudo] =useState();
 
 
     //formulario de edição
@@ -75,7 +77,7 @@ function Profile() {
 
     const photoData = {
 
-      title, image
+      title,conteudo, image
 
     }
     const formData = new FormData()
@@ -90,6 +92,7 @@ function Profile() {
     dispatch(publishPhoto(formData));
 
     setTitle("");
+    setConteudo("");
 
     resetComponentMessage();
   }
@@ -132,6 +135,7 @@ function Profile() {
 
     setEditId(photo._id)
     setEditTitle(photo.title)
+    setEditConteudo(photo.conteudo)
     setEditImage(photo.image)
   }
 
@@ -142,6 +146,7 @@ function Profile() {
   const photoData ={
 
       title: editTitle,
+      conteudo: editConteudo,
       id: editId
 
   }
@@ -171,7 +176,7 @@ function Profile() {
       <p>A onde ficaram os conteudos dos usuarios</p>
       <div className="profile-header">
         {user.profileImage && (
-          <img src={`${uploads}/users/${user.profileImage}`} alt={user.name} />
+          <img  src={`${uploads}/users/${user.profileImage}`} alt={user.name} />
         )}
         <div className="profile-description">
           <h2>{user.name}</h2>
@@ -187,10 +192,16 @@ function Profile() {
                 <h3>Compartilhe seu conteudo aqui:</h3>
               <form onSubmit={submitHandle}>
               <label>
-                <span>Titulo para o conteudo:</span>
+                <span>Titulo para o post:</span>
                 <input type="text" placeholder="insira um titulo" onChange={(e) => 
                   
                   setTitle(e.target.value)} value={title || ""}></input>
+              </label>
+              <label>
+                <span>Conteudo para o post:</span>
+                <textarea type="text" placeholder="insira um conteudo" onChange={(e) => 
+                  
+                  setConteudo(e.target.value)} value={conteudo || ""}></textarea>
               </label>
               <label>
                 <span>Imagem do post:</span>
@@ -202,31 +213,41 @@ function Profile() {
               </div>
 
               <div className="edit-photo hide" ref={editPhotoForm}>
-            <p>Editando:</p>
+            <h2>Editando:</h2>
             {editImage && (
               <img src={`${uploads}/photos/${editImage}`} alt={editTitle} />
             )}
             <form onSubmit={handleUpdate}>
-              <input
+              {/* <input
                 type="text"
                 placeholder="Insira um novo titulo"
                 onChange={(e) => setEditTitle(e.target.value)}
-                value={editTitle || ""}
-              />
+                value={editTitle || ""}/> */}
+              <input type="text" placeholder="insira um novo titulo"
+               onChange={(e) => setTitle(e.target.value)}></input>
+
+
+              <textarea
+                type="text"
+                placeholder="Insira um novo conteudo para o post"
+                onChange={(e) => setEditConteudo(e.target.value)}
+                value={editConteudo || ""}/>
+              
               <input type="submit" value="Atualizar" />
               <button className="cancel-btn" onClick={handleCancelEdit}>
                 Cancelar edição
               </button>
             </form>
-          </div>
+            </div>
+
 
               {errorPhoto && <Message msg={errorPhoto} type="error"></Message>}
               {messagePhoto && <Message msg ={messagePhoto} type="success"></Message>}
-            </>
-          )}
+          </>
+        )}
 
           <div className="user-photos">
-              <h2>Fotos publicadas:</h2>
+              <h2>Posts publicados:</h2>
 
               {photos && photos.map((photo) => (
               <div className="photo" key={photo._id}>
@@ -244,6 +265,7 @@ function Profile() {
                   <BsFillEyeFill ></BsFillEyeFill>
 
                 </Link>
+
                 <BsPencilFill onClick={() => handleEdit(photo)}></BsPencilFill>
                 <BsXLg onClick={()=> handleDelete(photo._id)}></BsXLg>
 
@@ -255,7 +277,7 @@ function Profile() {
             )}
             </div>
         ))}
-          {photos.lenght === 0 && <p>Ainda não a fotos</p>}
+          {photos.lenght === 0 && <p>Ainda não posts</p>}
              </div> 
     </div>
   )

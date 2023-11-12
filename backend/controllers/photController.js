@@ -7,8 +7,11 @@ const moongose = require("mongoose")
 //inseri a foto, e relata o usuario 
 const insertPhoto = async (req, res) => {
     const { title } = req.body;
+    
     const image = req.file.filename;
- 
+    
+    const { conteudo } = req.body;
+
     console.log(req.body);
 
     const reqUser = req.user;
@@ -21,6 +24,7 @@ const insertPhoto = async (req, res) => {
     const newPhoto = await Photo.create({
         image,
         title,
+        conteudo,
         userId: user._id,
         userName: user.name,
     });
@@ -108,6 +112,8 @@ const updatePhoto = async (req, res) => {
     
     const { id } = req.params;
     const { title } = req.body;
+    const {conteudo} = req.body;
+
   
     let image;
   
@@ -136,13 +142,18 @@ const updatePhoto = async (req, res) => {
     if (title) {
       photo.title = title;
     }
+
+    if(conteudo) {
+
+      photo.conteudo = conteudo;
+    }
   
     if (image) {
       photo.image = image;
     }
     await photo.save();
   
-    res.status(200).json({ photo, message: "Foto atualizada com sucesso!" });
+    res.status(200).json({ photo, message: "Post atualizada com sucesso!" });
   };
 
 

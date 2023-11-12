@@ -6,7 +6,7 @@ function Footer() {
     <div>
       <footer id="footer">
 
-      <p>Blog React Footer</p>
+      <p>© AgroNatural, 2023. Todos os direitos reservados</p>
 
       </footer>
       

@@ -1,9 +1,10 @@
 import './Navbar.css'
-
+import React from 'react';
 import { useState } from "react";
 import {NavLink, Link} from 'react-router-dom'
 import {BsSearch, BsHouseDoorFill, BsFillPersonFill, BsFillCameraFill} 
 from 'react-icons/bs'; //o bs é da biblioteca boodstrap
+import logo from './../img/Armored5.png'
 
 // Hooks
 import { useAuth } from "../hooks/useAuth";
@@ -42,7 +43,7 @@ function Navbar() {
   return (
     <nav id="nav">
     <Link to="/">
-      <h2>ReactGram</h2>
+      <img className='logo' src={logo} alt='Logo do site'></img>
     </Link>
     <form id="search-form"  onSubmit={handleSearch}>
       <BsSearch />
@@ -64,7 +65,7 @@ function Navbar() {
           {user && (
             <li>
               <NavLink to={`/users/${user._id}`}>
-                <BsFillCameraFill />
+                <span>Seus posts</span>
               </NavLink>
             </li>
           )}

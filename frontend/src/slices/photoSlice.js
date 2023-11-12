@@ -76,7 +76,8 @@ export const updatePhoto = createAsyncThunk(
     const token = thunkAPI.getState().auth.user.token;
 
     const data = await photoService.updatePhoto(
-      { title: photoData.title },
+      { title: photoData.title, conteudo: photoData.conteudo },
+      
       photoData.id,
       token
     );
@@ -169,7 +170,7 @@ export const photoSlice = createSlice({
         state.error = null;
         state.photo = action.payload;
         state.photos.unshift(state.photo);//vai adicionar o conteudo no primeiro lugar do array
-        state.message = "Foto publicada com sucesso!";
+        state.message = "Post publicada com sucesso!";
       })
       .addCase(publishPhoto.rejected, (state, action) => {
         state.loading = false;
@@ -221,7 +222,7 @@ export const photoSlice = createSlice({
         state.photos.map((photo) =>{
 
           if (photo._id === action.payload.photo._id) {
-            return (photo.title = action.payload.photo.title);
+            return (photo.title = action.payload.photo.title, photo.conteudo = action.payload.photo.conteudo);
           }
           return photo;
 
@@ -290,29 +291,6 @@ export const photoSlice = createSlice({
         state.error = null;
         state.photos = action.payload;
       })
-      // .addCase(getPhotos.pending, (state) => {
-      //   state.loading = true;
-      //   state.error = null;
-      // })
-      // .addCase(getPhotos.fulfilled, (state, action) => {
-      //   console.log(action.payload);
-      //   state.loading = false;
-      //   state.success = true;
-      //   state.error = null;
-      //   state.photos = action.payload;
-      // })
-      // .addCase(searchPhotos.pending, (state) => {
-      //   state.loading = true;
-      //   state.error = null;
-      // })
-      // .addCase(searchPhotos.fulfilled, (state, action) => {
-      //   console.log(action.payload);
-      //   state.loading = false;
-      //   state.success = true;
-      //   state.error = null;
-      //   state.photos = action.payload;
-      // });
-  
   },
 });
 

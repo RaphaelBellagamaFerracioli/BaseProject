@@ -19,6 +19,7 @@ const authGuard = async (req, res, next) => {
     req.user = await User.findById(verified.id).select("-password");
 
     next();
+    
   } catch (err) {
     res.status(400).json({ errors: ["O Token é inválido!"] });
   }

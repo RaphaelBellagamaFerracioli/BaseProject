@@ -4,6 +4,7 @@ import "./Auth.css";
  // Components
 import { Link } from "react-router-dom";
 import Message from "../../componnents/Message";
+import logo from "../../componnents/assets/Armored (6).png"
 
 // Hooks
 import { useEffect, useState } from "react";
@@ -41,8 +42,9 @@ import { login, reset } from "../../slices/authSlice";
     }, [dispatch]);
 
    return (
-    <div id="login">
-      <h2>Agroblog</h2>
+    <div className="login" id="login">
+      <h2><i>Agroblog</i></h2>
+      <img src={logo}></img>
       <p className="subtitle">Faça o login para ver o que há de novo.</p>
       <form onSubmit={handleSubmit}>
         <input

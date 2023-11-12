@@ -89,6 +89,7 @@ const Photo = () => {
             {photo.comments.length === 0 && <p>Não há comentários...</p>}
             {photo.comments.map((comment) => (
               <div className="comment" key={comment.comment}>
+               
                 <div className="author">
                   {comment.userImage && (
                     <img
