@@ -65,7 +65,7 @@ const Photo = () => {
 
   return (
     <div id="photo">
-      <p>Foto</p>
+      <p>Post</p>
       <PhotoItem photo={photo} />
 
       <LikeContainer photo={photo} user={user} handleLike={handleLike} />

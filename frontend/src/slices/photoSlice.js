@@ -219,14 +219,16 @@ export const photoSlice = createSlice({
         state.success = true;
         state.error = null;
        
-        state.photos.map((photo) =>{
-
+        state.photos = state.photos.map((photo) => {
           if (photo._id === action.payload.photo._id) {
-            return (photo.title = action.payload.photo.title, photo.conteudo = action.payload.photo.conteudo);
+            return {
+              ...photo,
+              title: action.payload.photo.title,
+              conteudo: action.payload.photo.conteudo
+            };
           }
           return photo;
-
-        })
+        });
 
         state.message = action.payload.message
       })

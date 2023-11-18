@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const axios = require('axios');
+
 
 // Controller
 const { insertPhoto,
@@ -20,15 +20,7 @@ const authGuard = require("../middlewares/authGuard");
 const validate = require("../middlewares/handleValidation");
 const { imageUpload } = require("../middlewares/imageUploader");
  
-const validateWithJavaServer = async (photoData) => {
-    try {
-        const response = await axios.post('http://localhost:8000/validatePhoto', photoData);
-        return response.data.isValid;
-    } catch (error) {
-        console.error("Erro ao validar com o servidor Java:", error);
-        return false;
-    }
-};
+
 
 // Routes
 router.post(
@@ -37,13 +29,6 @@ router.post(
     imageUpload.single("image"), 
     photoInsertValidation(), 
     validate,
-    async (req, res, next) => {
-        const isValid = await validateWithJavaServer(req.body);
-        if (!isValid) {
-            return res.status(400).send("Dados do post inválidos.");
-        }
-        next();
-    },
     insertPhoto
 );
 

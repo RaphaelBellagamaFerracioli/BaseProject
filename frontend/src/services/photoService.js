@@ -5,16 +5,13 @@ const publishPhoto = async (data, token) => {
   const config = requestConfig("POST", data, token, true);
 
   try {
-    const res = await fetch(api + "/photos", config)
-      .then((res) => res.json())
-      .catch((err) => err);
-
+    const response = await fetch(api + "/photos", config);
+    const res = await response.json();
     return res;
   } catch (error) {
-    console.log(error);
+    console.error("Erro ao publicar foto:", error);
   }
 };
-
 // Get user photos
 const getUserPhotos = async (id, token) => {
   const config = requestConfig("GET", null, token);
@@ -75,7 +72,7 @@ const updatePhoto = async (data, id, token) => {
   }
 };
 
-// Like a photo
+//like no post
 const like = async (id, token) => {
   const config = requestConfig("PUT", null, token);
 
