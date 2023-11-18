@@ -20,7 +20,7 @@ const insertPhoto = async (req, res) => {
 
     console.log(user.name);
 
-    //Create a photo
+    //cria um novo post
     const newPhoto = await Photo.create({
         image,
         title,
@@ -52,13 +52,13 @@ const deletePhoto = async (req, res) => {
     
     const photo = await Photo.findById(new moongose.Types.ObjectId(id));
   
-    // Check if photo exists
+    // checa se o post existe
     if (!photo) {
       res.status(404).json({ errors: ["Foto não encontrada!"] });
       return;
     }
   
-    // Check if photo belongs to user
+    // checa o post do usuario
     if (!photo.userId.equals(reqUser._id)) {
       res
         .status(422)
@@ -70,7 +70,7 @@ const deletePhoto = async (req, res) => {
   
     res
       .status(200)
-      .json({ id: photo._id, message: "Foto excluída com sucesso." });
+      .json({ id: photo._id, message: "post excluído com sucesso." });
   };
  
   //vai chamar todas as fotos
@@ -100,7 +100,7 @@ const getPhotoById = async (req, res) => {
   
     // Check if photo exists
     if (!photo) {
-      res.status(404).json({ errors: ["Foto não encontrada!"] });
+      res.status(404).json({ errors: ["post não encontrado!"] });
       return;
     }
   
@@ -127,7 +127,7 @@ const updatePhoto = async (req, res) => {
   
     // Check if photo exists
     if (!photo) {
-      res.status(404).json({ errors: ["Foto não encontrada!"] });
+      res.status(404).json({ errors: ["Post não encontrado!"] });
       return;
     }
   
@@ -165,15 +165,15 @@ const updatePhoto = async (req, res) => {
   
     const photo = await Photo.findById(id);
   
-    // checa se a uma foto
+    // checa se a um post
     if (!photo) {
-      res.status(404).json({ errors: ["Foto não encontrada!"] });
+      res.status(404).json({ errors: ["Post não encontrado!"] });
       return;
     }
   
-    // Check if user already liked the photo
+    // checa se usuario já deu like no post
     if (photo.likes.includes(reqUser._id)) {
-      res.status(422).json({ errors: ["Você já curtiu esta foto."] });
+      res.status(422).json({ errors: ["Você já curtiu este post."] });
       return;
     }
   
@@ -199,9 +199,9 @@ const commentPhoto = async (req, res) => {
 
   const photo = await Photo.findById(id);
 
-  // Check if photo exists
+  // checa se a um post
   if (!photo) {
-    res.status(404).json({ errors: ["Foto não encontrada!"] });
+    res.status(404).json({ errors: ["Post não encontrado!"] });
     return;
   }
 

@@ -4,6 +4,9 @@ import { useState } from "react";
 import {NavLink, Link} from 'react-router-dom'
 import {BsSearch, BsHouseDoorFill, BsFillPersonFill, BsFillCameraFill} 
 from 'react-icons/bs'; //o bs é da biblioteca boodstrap
+import Iconedetempo from "../img/unnamed.png"
+
+import Weather from "./Weather"
 import logo from './../img/Armored5.png'
 
 // Hooks
@@ -42,6 +45,11 @@ function Navbar() {
   }
   return (
     <nav id="nav">
+      <div className='iconeDotempo'>
+      <img src={Iconedetempo}></img>
+       <Weather > </Weather>
+      </div>
+      
     <Link to="/">
       <img className='logo' src={logo} alt='Logo do site'></img>
     </Link>
