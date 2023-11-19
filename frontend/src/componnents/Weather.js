@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
+import Iconedetempo from "../img/unnamed.png"
+import "./Weather.css"
 const Weather = () => {
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
@@ -36,9 +37,15 @@ const Weather = () => {
   if (!weather || !weather.main) return <p>Carregando previsão do tempo...</p>;
 
   return (
-    <div>
-      <p>Temperatura: {weather.main.temp}°C</p>
-      <p>Cidade: {weather.name}</p>
+    
+    <div id="tempo">
+      <div id='icone'>
+      <img id="iconeDotempo" src={Iconedetempo}></img>
+      </div>
+      
+      <div id='temperatura'><p>Temperatura: {weather.main.temp}°C</p>
+      <p>Cidade: {weather.name}</p></div>
+      
     </div>
   );
 };

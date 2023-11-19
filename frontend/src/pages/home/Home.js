@@ -6,7 +6,7 @@ import LikeContainer from "../../componnents/LikeContainer";
 import PhotoItem from "../../componnents/PhotoItem";
 import { Link } from "react-router-dom";
 import Carrousel from '../../componnents/Carrousel';
-
+import ContactForm from '../../componnents/ContactForm';
 // hooks
 import { useSelector, useDispatch } from "react-redux";
 import { useResetComponentMessage } from "../../hooks/useResetComponentMessage";
@@ -83,7 +83,8 @@ const Home =() => {
         <span>Página {currentPage} de {totalPages}</span>
         <button onClick={nextPage} disabled={currentPage === totalPages}>Próximo</button>
       </div>
-      
+
+      <ContactForm></ContactForm>
       
       {photos && photos.length === 0 && (
 

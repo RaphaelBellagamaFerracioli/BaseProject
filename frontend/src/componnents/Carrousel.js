@@ -18,15 +18,15 @@ const Carrousel = () => {
     <ResponsiveCarousel>
       <div className='container1'>
         <img src={image1} alt="Imagem 1" />
-        <p className="legend">Legend 1</p>
+        <p className="legend"><strong>Legend 3</strong></p>
       </div>
       <div>
         <img src={image2} alt="Imagem 2" />
-        <p className="legend">Legend 2</p>
+        <p className="legend"><strong>Legend 3</strong></p>
       </div>
       <div>
         <img src={image4} alt="Imagem 3" />
-        <p className="legend">Legend 3</p>
+        <p className="legend"><strong>Legend 3</strong></p>
       </div>
       <div>
         <img src={image3} alt="Imagem 4" />
